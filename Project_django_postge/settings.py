@@ -55,7 +55,8 @@ ROOT_URLCONF = 'Project_django_postge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],                                   ### - (+)
+        'DIRS': [],
+        #'DIRS': [BASE_DIR / "templates"],                                   ### - (+)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,10 +75,36 @@ WSGI_APPLICATION = 'Project_django_postge.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+### - БЫЛО
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+### - ВАРИАНТ 1
+# DATABASES = {
+#   'default': {                                        ### - (+)
+#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#       'NAME': 'shop_db',                              # Имя базы данных
+#       'USER': 'postgres',                             # Пользователь PostgreSQL
+#       'PASSWORD': '96354106',                         # Пароль PostgreSQL
+#       'HOST': 'localhost',                            # Адрес сервера базы данных
+#       'PORT': '5432',                                 # Порт подключения
+#     }
+# }
+
+### - ВАРИАНТ 2
+DATABASES = {                                                             ### - (+)
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "shop_db",
+        "USER": "postgres",
+        "PASSWORD": "96354106",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
